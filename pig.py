@@ -15,10 +15,10 @@ class Game:
 class Die:
     def __init__(self):
         self.roll = randint(1, len(dieNumbers))
-        print(self.roll)
+        # print(self.roll)
 
-    def __str__(self):
-        return f"A {self.roll} was rolled"
+    # def __str__(self):
+        # return f"A {self.roll} was rolled"
 
 
 class Player:
@@ -41,7 +41,7 @@ class Player:
             if pick == "h":
                 self.totalScore += self.roundScore
                 print("Playing it safe I see...")
-                Opponent()
+                Opponent().opponentTurn()
             if pick == "r":
                 self.roundScore += self.roundScore
                 print("Good luck bub!")
@@ -53,14 +53,15 @@ class Opponent:
         self.roundScore = 0
         self.totalScore = 0
         self.name = 'STORMAGEDEON'
-        print(f'NOW {self.name} WILL GO')
+        self.otherName = "Betsy"
 
     def opponentTurn(self):
+        print(f'NOW {self.name} WILL GO')
         self.currentRoll = Die().roll
-        print(f'{slef.name} ROLLED A {self.currentRoll}')
+        print(f'{self.name} ROLLED A {self.currentRoll}')
         if self.currentRoll == 1:
             print(f'{self.name} ENDS HER TURN')
-            Player().playerTurn
+            Player(self.otherName).playerTurn()
 
 Game()
     
